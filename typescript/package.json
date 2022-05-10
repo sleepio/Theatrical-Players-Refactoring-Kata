@@ -1,0 +1,26 @@
+{
+  "name": "theatrical-players-refactoring-kata-typescript",
+  "version": "1.0.0",
+  "description": "TypeScript example from first chapter of 'Refactoring' by Martin Fowler, 2nd Edition (https://www.thoughtworks.com/books/refactoring2)",
+  "scripts": {
+    "build": "tsc --pretty",
+    "test": "jest"
+  },
+  "keywords": [
+    "kata",
+    "refactor"
+  ],
+  "author": "",
+  "license": "MIT",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/emilybache/Theatrical-Players-Refactoring-Kata/issues"
+  },
+  "homepage": "https://github.com/emilybache/Theatrical-Players-Refactoring-Kata",
+  "devDependencies": {
+    "@types/jest": "^27.5.0",
+    "jest": "^28.1.0",
+    "ts-jest": "^28.0.2",
+    "typescript": "^4.6.4"
+  }
+}
