@@ -18,7 +18,6 @@ export function statement(
   plays: { [key: string]: Play }
 ): string {
   let totalAmount = 0;
-  let volumeCredits = 0;
   let result = `Statement for ${invoice.customer}\n`;
 
   for (let perf of invoice.performances) {
@@ -29,6 +28,7 @@ export function statement(
     totalAmount += amountFor(perf);
   }
 
+  let volumeCredits = 0;
   for (let perf of invoice.performances) {
     // add volume credits
     volumeCredits += volumeCreditsFor(perf);
