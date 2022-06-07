@@ -25,7 +25,7 @@ export function statement(
       perf.audience
     } seats)\n`;
   }
-  result += `Amount owed is ${usd(fishPaste() / 100)}\n`;
+  result += `Amount owed is ${usd(totalAmount() / 100)}\n`;
   result += `You earned ${totalVolumeCredits()} credits\n`;
   return result;
 
@@ -80,7 +80,7 @@ export function statement(
     return volumeCredits;
   }
 
-  function fishPaste(): number {
+  function totalAmount(): number {
     let totalAmount = 0;
     for (let perf of invoice.performances) {
       totalAmount += amountFor(perf);
