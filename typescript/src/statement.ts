@@ -27,13 +27,7 @@ export function statement(
     } seats)\n`;
     totalAmount += amountFor(perf);
   }
-
-  let volumeCredits = 0;
-  for (let perf of invoice.performances) {
-    // add volume credits
-    volumeCredits += volumeCreditsFor(perf);
-  }
-
+  let volumeCredits = totalVolumeCredits();
   result += `Amount owed is ${usd(totalAmount / 100)}\n`;
   result += `You earned ${volumeCredits} credits\n`;
   return result;
@@ -78,5 +72,14 @@ export function statement(
       currency: "USD",
       minimumFractionDigits: 2,
     }).format(aNumber);
+  }
+
+  function totalVolumeCredits(): number {
+    let volumeCredits = 0;
+    for (let perf of invoice.performances) {
+      // add volume credits
+      volumeCredits += volumeCreditsFor(perf);
+    } 
+    return volumeCredits;
   }
 }
