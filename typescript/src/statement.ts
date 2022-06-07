@@ -25,12 +25,12 @@ export function statement(
     // add volume credits
     volumeCredits += volumeCreditsFor(perf);
     // print line for this order
-    result += ` ${playFor(perf).name}: ${format(amountFor(perf) / 100)} (${
+    result += ` ${playFor(perf).name}: ${usd(amountFor(perf) / 100)} (${
       perf.audience
     } seats)\n`;
     totalAmount += amountFor(perf);
   }
-  result += `Amount owed is ${format(totalAmount / 100)}\n`;
+  result += `Amount owed is ${usd(totalAmount / 100)}\n`;
   result += `You earned ${volumeCredits} credits\n`;
   return result;
 
@@ -68,7 +68,7 @@ export function statement(
     return volumeCredits;
   }
 
-  function format(aNumber: number): string {
+  function usd(aNumber: number): string {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
