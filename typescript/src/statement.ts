@@ -25,8 +25,7 @@ export function statement(
       perf.audience
     } seats)\n`;
   }
-  let totalAmount = fishPaste();
-  result += `Amount owed is ${usd(totalAmount / 100)}\n`;
+  result += `Amount owed is ${usd(fishPaste() / 100)}\n`;
   result += `You earned ${totalVolumeCredits()} credits\n`;
   return result;
 
