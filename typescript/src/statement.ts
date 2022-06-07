@@ -17,7 +17,6 @@ export function statement(
   invoice: Invoice,
   plays: { [key: string]: Play }
 ): string {
-  let totalAmount = 0;
   let result = `Statement for ${invoice.customer}\n`;
 
   for (let perf of invoice.performances) {
@@ -25,8 +24,8 @@ export function statement(
     result += ` ${playFor(perf).name}: ${usd(amountFor(perf) / 100)} (${
       perf.audience
     } seats)\n`;
-    totalAmount += amountFor(perf);
   }
+  let totalAmount = fishPaste();
   result += `Amount owed is ${usd(totalAmount / 100)}\n`;
   result += `You earned ${totalVolumeCredits()} credits\n`;
   return result;
@@ -80,5 +79,13 @@ export function statement(
       volumeCredits += volumeCreditsFor(perf);
     } 
     return volumeCredits;
+  }
+
+  function fishPaste(): number {
+    let totalAmount = 0;
+    for (let perf of invoice.performances) {
+      totalAmount += amountFor(perf);
+    }
+    return totalAmount;
   }
 }
