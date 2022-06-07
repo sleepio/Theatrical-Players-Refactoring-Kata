@@ -56,11 +56,11 @@ export function statement(
   }
 
   function volumeCreditsFor(aPerformance: PlayPerformance): number {
-    let volumeCredits = 0;
-    volumeCredits += Math.max(aPerformance.audience - 30, 0);
+    let result = 0;
+    result += Math.max(aPerformance.audience - 30, 0);
     // add extra credit for every ten comedy attendees
-    if ("comedy" === playFor(aPerformance).type) volumeCredits += Math.floor(aPerformance.audience / 5);
-    return volumeCredits;
+    if ("comedy" === playFor(aPerformance).type) result += Math.floor(aPerformance.audience / 5);
+    return result;
   }
 
   function usd(aNumber: number): string {
@@ -72,19 +72,19 @@ export function statement(
   }
 
   function totalVolumeCredits(): number {
-    let volumeCredits = 0;
+    let result = 0;
     for (let perf of invoice.performances) {
       // add volume credits
-      volumeCredits += volumeCreditsFor(perf);
+      result += volumeCreditsFor(perf);
     } 
-    return volumeCredits;
+    return result;
   }
 
   function totalAmount(): number {
-    let totalAmount = 0;
+    let result = 0;
     for (let perf of invoice.performances) {
-      totalAmount += amountFor(perf);
+      result += amountFor(perf);
     }
-    return totalAmount;
+    return result;
   }
 }
